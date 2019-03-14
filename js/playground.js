@@ -25,8 +25,7 @@ var circle=$('<div class="circle"</div>');
 
 }
 
-
-  $("#move").click(function move(){
+/*$("#move").click(function move(){
 
 	var stop;
     if (stop==true){
@@ -102,7 +101,8 @@ var circle=$('<div class="circle"</div>');
        });//each
     }
     });//move
-
+  
+*/
 
 
 

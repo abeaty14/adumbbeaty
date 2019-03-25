@@ -13,8 +13,7 @@ function getRandomColor(){
 function addCircle(){
 
 var circle=$('<div class="circle"</div>');
-$(circle).switchx = true;
-$(circle).switchy = true;
+
 	$("#board").append(circle);
 	$(circle).css({
     left : (Math.random() * ($("#board").width() - $(circle).width())),
@@ -123,19 +122,18 @@ $("#move").click(function move(){
     }
       else {
         stop=true;
-
+      $("#board").each(function(){
+        var switchx = true;
         var switchy=true;
-      $("#board").children().each(function(){
-        
         var circle1 = $(this).child;
+
         var id = setInterval(frame, 10);
            function frame() {
-           
            var x = $(circle1).position();
-          if ($(circle1).switchx=false) {
+          if (switchx==false) {
                 if(x.left<0)
                 {
-                  $(circle1).switchx=true;
+                  switchx=true;
                   $(circle1).css({background: getRandomColor()});
                 }
                   else { $(circle1).css({
@@ -143,10 +141,10 @@ $("#move").click(function move(){
                  });
               }
         }
-        else if($(circle1).switchx=true) {
+        else if(switchx==true) {
                 if(x.left>400){
                  
-                  $(circle1).switchx=false;
+                  switchx=false;
                   $(circle1).css({background: getRandomColor()});
                 }
                 else {$(circle1).css({
@@ -154,9 +152,9 @@ $("#move").click(function move(){
                  });
               }
           }
-          if ($(circle1).switchy=false) {
+          if (switchy==false) {
                 if(x.top<0){
-                  $(circle1).switchy=true;
+                  switchy=true;
                   $(circle1).css({background: getRandomColor()});
                   }
                   else { $(circle1).css({
@@ -165,9 +163,9 @@ $("#move").click(function move(){
               }
           }
                
-              else if($(circle1).switchy=true) {
+              else if(switchy==true) {
                 if(x.top>400){
-                  $(circle1).switchy=false;
+                  switchy=false;
                   $(circle1).css({background: getRandomColor()});
                 }
                 else {$(circle1).css({

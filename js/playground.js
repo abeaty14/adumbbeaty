@@ -1,5 +1,7 @@
 //start of page
+var stop=false;
 $(document).ready(function(){
+
 function getRandomColor(){
 	var letters="0123456789abcdef";
 	var result ="#";
@@ -25,115 +27,27 @@ var circle=$('<div class="circle"</div>');
 
 }
 
-
-/*  $("#move").click(function move(){
-  var stop;
-    if (stop==true){
-      clearInterval(id);
-    }
-      else {
-        stop=true;
-      $(".board").children().each(function(){
-        var switchx=true;
-        var switchy=true;
-        var id = setInterval(frame, 10);
-           function frame() {
-           var circle1 = this;
-           var x = $(circle1).position();
-
-              if (switchx=false) {
-                if(x.left<=0){
-                  switchx=true;
-                  $(circle1).css({
-                  background: getRandomColor(),
-                  border-color: getRandomColor()
-                 });
-                  }
-                  else { $(circle1).css({
-                  left:  x.left-1,
-                 });
-              }
-          }
-               
-              else if(switchx=true) {
-                if(x.left>=750){
-                  switchx=false;
-                  $(circle1).css({
-                  background: getRandomColor(),
-                  border-color: getRandomColor()
-                 });
-                }
-                else {$(circle1).css({
-                  left: x.left+1,
-                 });
-              }
-          }
-          if (switchy=false) {
-                if(x.top<=0){
-                  switchy=true;
-                  $(circle1).css({
-                 background: getRandomColor(),
-                 border-color: getRandomColor()
-                 });
-                  }
-                  else { $(circle1).css({
-                  top:  x.top+1,
-                 });
-              }
-          }
-               
-              else if(switchy=true) {
-                if(x.top>=750){
-                  switchy=false;
-                  $(circle1).css({
-                 background: getRandomColor(),
-                 border-color: getRandomColor()
-                 });
-                }
-                else {$(circle1).css({
-                  top: x.top-1,
-                 });
-              }
-          }
-          
-
-
-
-
-
-}//function
-
-
-     });  //each
-    }//else
-    });//move
-
-*/
-
-
-
-
-
-
 $("#move").click(function move(){
-  var stop;
+ var stop;
     if (stop==true){
       clearInterval(id);
     }
       else {
         stop=true;
-      $("#board").each(function(){
+      $(".circle").each(function(){
         var switchx = true;
         var switchy=true;
         var circle1 = $(this).child;
-
+        $(circle1).data(0,0);
+        $(circle1).switchy=true;
         var id = setInterval(frame, 10);
            function frame() {
+            alert($(circle1).switchx);
            var x = $(circle1).position();
-          if (switchx==false) {
+          if ( $(circle1).data[1]==false) {
                 if(x.left<0)
                 {
-                  switchx=true;
+                   $(circle1).switchx=true;
                   $(circle1).css({background: getRandomColor()});
                 }
                   else { $(circle1).css({
@@ -141,10 +55,10 @@ $("#move").click(function move(){
                  });
               }
         }
-        else if(switchx==true) {
+        else if( $(circle1).switchx==true) {
                 if(x.left>400){
                  
-                  switchx=false;
+                   $(circle1).switchx=false;
                   $(circle1).css({background: getRandomColor()});
                 }
                 else {$(circle1).css({
@@ -222,8 +136,7 @@ var z=999;
 var go=false;
 for(var i=0;i<49;i++)
 addCircle();
-
-
+ 
 });//end
 
 

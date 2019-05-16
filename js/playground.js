@@ -33,16 +33,18 @@ var id;
 $("#move").click(function move(){
  
     if (stop==true){
-      for (var i = 1; i < 99999; i++)
-     window.clearInterval(i);
+      //for (var i = 1; i < 99999; i++)
+     window.clearInterval(id);
    stop=false;
     }
       else {
         stop=true;
-      $(".circle").each(function(){
-        var circle1 = $(this)
+      
         id = setInterval(frame, 10);
+
            function frame() {
+            $(".circle").each(function(){
+          var circle1 = $(this);
            var x = $(circle1).position();
            if(x.left<0){
             $(circle1).data("switchx",true);
@@ -88,8 +90,8 @@ $("#move").click(function move(){
 
               
             
-          }
-       });//each
+          });
+       };//each
     }
  });//move
 

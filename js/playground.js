@@ -15,8 +15,8 @@ function getRandomColor(){
 function addCircle(){
 
 var circle=$('<div class="circle"</div>');
-$(circle).data("switchx",true);
-$(circle).data("switchy",true);
+$(circle).data("switchx",Math.random() >= 0.5);
+$(circle).data("switchy",Math.random() >= 0.5);
 $(circle).data(0,0);
 	$("#board").append(circle);
 	$(circle).css({

@@ -46,19 +46,19 @@ $("#move").click(function move(){
             $(".circle").each(function(){
           var circle1 = $(this);
            var x = $(circle1).position();
-           if(x.left<0){
+           if(x.left<3){
             $(circle1).data("switchx",true);
             $(circle1).css({background: getRandomColor()});
            }
-           else if(x.left>380){
+           else if(x.left>377){
             $(circle1).data("switchx",false);
             $(circle1).css({background: getRandomColor()});
            }
-           if(x.top<0){
+           if(x.top<3){
             $(circle1).data("switchy",true);
             $(circle1).css({background: getRandomColor()});
            }
-           else if(x.top>380){
+           else if(x.top>377){
              $(circle1).data("switchy",false);
              $(circle1).css({background: getRandomColor()});
            }

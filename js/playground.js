@@ -133,12 +133,100 @@ function remove(){
 	var node = document.getElementByClass("circle");
 	node.removeChild(node.firstChild);
 }
+////////////////////////////////////////////////////////////////////// CIRCLE END
+
+$("#startSnake").click(function go(){
+    var snake = $('<div class="snake"</div>');
+    $(snake).data("bodyNum", 1);
+    $(snake).data("left", 1);
+    $(snake).data("right", 1);
+    $(snake).data("up", 1);
+    $(snake).data("down", 1);
+    $("#board").append(snake);
+    $(snake).css({
+      left : (Math.random() * ($("#board").width() - $(circle).width())%5),
+      top : (Math.random() * ($("#board").height() - $(circle).height())%5),
+  });
+    idSnake = setInterval(frame, 100);
+    function frame() {
+        if ($(snake).data("left")==0)
+        {
+          $(snake).css({
+                  left: x.left-5,
+                 });
+        }
+        else if ($(snake).data("right")==0)
+        {
+          $(snake).css({
+                  left: x.left+5,
+                 });
+        }
+        else if ($(snake).data("up")==0)
+        {
+          $(snake).css({
+                  top: x.left-5,
+                 });
+        }
+        else if ($(snake).data("down")==0)
+        {
+          $(snake).css({
+                  top: x.left+5,
+                 });
+        }
+    }
+});
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        $(snake).data("up")=0;
+        $(snake).data("down")=1;
+        $(snake).data("left")=1;
+        $(snake).data("right")=1;
+    }
+    else if (e.keyCode == '40') {
+        $(snake).data("up")=1;
+        $(snake).data("down")=0;
+        $(snake).data("left")=1;
+        $(snake).data("right")=1;
+    }
+    else if (e.keyCode == '37') {
+        $(snake).data("up")=1;
+        $(snake).data("down")=1;
+        $(snake).data("left")=0;
+        $(snake).data("right")=1;
+    }
+    else if (e.keyCode == '39') {
+        $(snake).data("up")=1;
+        $(snake).data("down")=1;
+        $(snake).data("left")=1;
+        $(snake).data("right")=0;
+    }
+
+}
+
+
 //rest of code
 var z=999;
 var go=false;
 for(var i=0;i<30;i++)
 addCircle();
  
+
+
+
+
+
+
+
+
+
+
+
 });//end
 
 
